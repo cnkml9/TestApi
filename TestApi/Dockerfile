@@ -33,7 +33,7 @@ COPY . ./
 
 RUN dotnet publish --no-restore -c Release -o out
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:5.0
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
 COPY --from=build-env /app/out .
 ENTRYPOINT ["dotnet", "Api.dll"]
